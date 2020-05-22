@@ -8,7 +8,7 @@ import json
 host='localhost'
 database='da3t_db'
 user='postgres'
-password='barca821997'
+password=''                      #write ur DB password
 
 app=Flask('__name__')
 
@@ -123,7 +123,7 @@ def daycontext():
             return jsonify({'error':'empty value'})
 
 #service place
-key='AIzaSyDKuA8HLQFPJkXLSvC12rCEPGTGUGJ1JE0'
+key=''
 @app.route('/place',methods=['POST','GET'])
 def place():
     if request.method == 'GET':

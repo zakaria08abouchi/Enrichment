@@ -2,8 +2,7 @@ import requests
 import json
 from datetime import datetime,timedelta
 
-#key='e02bd93fa40dc48a804040fc963880c7'
-# getting
+
 
 def getWeatherData(location,unixDate,key):
     

@@ -8,11 +8,11 @@ from dbConnection import DatabaseConnection
 
 
 
-key='e02bd93fa40dc48a804040fc963880c7'   
+key=''   
 host='localhost'
 database='da3t_db'
 user='postgres'
-password='barca821997'
+password=''                              #write DB password
 location={"lat":46.166,"lon":-1.15}
 
 connection=DatabaseConnection(user=user,password=password,host=host,database=database)
