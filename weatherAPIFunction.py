@@ -68,7 +68,7 @@ def getQuery(type,lat,lon,radius):
 
 
 def getPlacePOI(lat,lon,radius,keyword,type,key):
-    #url='https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={},{}&radius={}&language={}&type={}&key=AIzaSyDKuA8HLQFPJkXLSvC12rCEPGTGUGJ1JE0'
+    
     url="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={},{}&radius={}&keyword={}&type={}&key={}"
     url=url.format(lat,lon,radius,keyword,type,key)
     response=requests.get(url)
