@@ -1,0 +1,836 @@
+{
+   "type":"FeatureCollection",
+   "crs":{
+      "type":"name",
+      "properties":{
+         "name":"urn:ogc:def:crs:OGC:1.3:CRS84"
+      }
+   },
+   "features":[
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/1344660004",
+            "type":"bank",
+            "name":"BNP Paribas Agence De Coligny",
+            "brand":"BNP Paribas",
+            "operator":"BNP Paribas",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":"Mo-Fr 08:30-12:15,13:00-17:30; Sa 08:30-12:15",
+            "bank_id_code":null,
+            "has_atm":"no",
+            "brand_wikidata":"Q499707",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.165881,
+               46.159802000316986
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/1423444840",
+            "type":"atm",
+            "name":null,
+            "brand":null,
+            "operator":"BNP Paribas",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":null,
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1659825,
+               46.159817100316992
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/1784947510",
+            "type":"bank",
+            "name":"Société Générale",
+            "brand":"Société Générale",
+            "operator":"Société Générale",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q270363",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1541988,
+               46.143239700319718
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/1812188429",
+            "type":"bank",
+            "name":"LCL",
+            "brand":null,
+            "operator":"LCL",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":null,
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1543252,
+               46.142881000319775
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/1812202209",
+            "type":"bank",
+            "name":"Crédit agricole",
+            "brand":"Crédit Agricole",
+            "operator":"Crédit Agricole",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q590952",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1536898,
+               46.148545200318836
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/1821391086",
+            "type":"bank",
+            "name":"Banque Tarneaud",
+            "brand":"Banque Tarneaud",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":null,
+            "brand_wikidata":"Q2882958",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1375995,
+               46.166354500315926
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/1839762287",
+            "type":"bank",
+            "name":null,
+            "brand":null,
+            "operator":"CIC",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":null,
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1399777,
+               46.141715500319947
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/1857945840",
+            "type":"bank",
+            "name":"Crédit Mutuel Les Minimes",
+            "brand":"Crédit Mutuel",
+            "operator":"Crédit Mutuel",
+            "network":null,
+            "wheelchair":"limited",
+            "opening_hours":"Tu-Fr 10:00-13:00; Sa 10:00-12:30",
+            "bank_id_code":null,
+            "has_atm":null,
+            "brand_wikidata":"Q642627",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1523967,
+               46.146919100319096
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/1969619337",
+            "type":"bank",
+            "name":null,
+            "brand":null,
+            "operator":"Banque Populaire",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":null,
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1583507,
+               46.148871600318785
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/2181816921",
+            "type":"atm",
+            "name":null,
+            "brand":null,
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":null,
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1435198,
+               46.148389200318867
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/2330457036",
+            "type":"bank",
+            "name":"Société Générale",
+            "brand":"Société Générale",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":"Mo-Fr 09:00-12:30, Mo-We,Fr 13:50-17:45; Th 14:50-17:45",
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q270363",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1537533,
+               46.159445100317065
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/2403788998",
+            "type":"bank",
+            "name":"BNP Paribas",
+            "brand":"BNP Paribas",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q499707",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1537408,
+               46.158417900317218
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/2403788999",
+            "type":"bank",
+            "name":"Caisse d'Épargne",
+            "brand":"Caisse d'Épargne",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":null,
+            "brand_wikidata":"Q1547738",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.153587,
+               46.158584100317199
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/2445964877",
+            "type":"bank",
+            "name":"Banque Tarneaud",
+            "brand":"Banque Tarneaud",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":null,
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1497583,
+               46.155423700317712
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/2968814917",
+            "type":"bank",
+            "name":"Banque Populaire",
+            "brand":"Banque Populaire",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":"Tu-Fr 08:30-12:15,13:30-17:30; Sa 08:30-12:15",
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q846647",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1759435,
+               46.164073400316298
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/3057603858",
+            "type":"bank",
+            "name":"CIC",
+            "brand":"CIC",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q746525",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1532135,
+               46.158220900317268
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/3057603859",
+            "type":"bank",
+            "name":"BNP Paribas",
+            "brand":"BNP Paribas",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q499707",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1535253,
+               46.158182100317255
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/3057603861",
+            "type":"bank",
+            "name":null,
+            "brand":null,
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":null,
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1538544,
+               46.158311300317244
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/3057604559",
+            "type":"bank",
+            "name":"Crédit Maritime",
+            "brand":"Crédit Maritime",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q17176866",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1506154,
+               46.158613000317203
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/3469171853",
+            "type":"bank",
+            "name":"LCL",
+            "brand":"LCL",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q779722",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.149718,
+               46.162142500316627
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/3627454961",
+            "type":"atm",
+            "name":null,
+            "brand":"CiC",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":null,
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1535907,
+               46.157800600317323
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/3636958891",
+            "type":"bank",
+            "name":"Crédit Agricole",
+            "brand":"Crédit Agricole",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":null,
+            "brand_wikidata":"Q590952",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1482777,
+               46.160647900316853
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/4356496099",
+            "type":"atm",
+            "name":null,
+            "brand":null,
+            "operator":"Credit Mutuel",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":null,
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1693409,
+               46.140613300320133
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/5080867938",
+            "type":"bank",
+            "name":"BNP Paribas",
+            "brand":"BNP Paribas",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q499707",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1531056,
+               46.147977600318931
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/5110659321",
+            "type":"bank",
+            "name":"Caisse d'Épargne",
+            "brand":"Caisse d'Épargne",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":null,
+            "brand_wikidata":"Q1547738",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1788017,
+               46.160063000316953
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/5576066726",
+            "type":"bank",
+            "name":"Crédit Mutuel",
+            "brand":"Crédit Mutuel",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":null,
+            "brand_wikidata":"Q642627",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1540061,
+               46.1603582003169
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/5815046982",
+            "type":"atm",
+            "name":null,
+            "brand":null,
+            "operator":"LCL",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":null,
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1539662,
+               46.158330100317237
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/5815046983",
+            "type":"bank",
+            "name":"LCL",
+            "brand":"LCL",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":null,
+            "brand_wikidata":"Q779722",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.154034,
+               46.158317000317233
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/6147721314",
+            "type":"bank",
+            "name":"LCL",
+            "brand":"LCL",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q779722",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1701396,
+               46.169411200315423
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"node\/7007083974",
+            "type":"bank",
+            "name":"Crédit Agricole",
+            "brand":"Crédit Agricole",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q590952",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.1435062,
+               46.148433700318847
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"way\/119804551",
+            "type":"bank",
+            "name":"Crédit Mutuel",
+            "brand":"Crédit Mutuel",
+            "operator":null,
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":null,
+            "brand_wikidata":"Q642627",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.184490585633685,
+               46.16476786755576
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"way\/119812339",
+            "type":"bank",
+            "name":"Banque de France",
+            "brand":"Banque de France",
+            "operator":"Banque de France",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":null,
+            "brand_wikidata":"Q806950",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.156849625565956,
+               46.15841267450552
+            ]
+         }
+      },
+      {
+         "type":"Feature",
+         "properties":{
+            "osm_id":"way\/119866736",
+            "type":"bank",
+            "name":"BNP Paribas",
+            "brand":"BNP Paribas",
+            "operator":"BNP Paribas",
+            "network":null,
+            "wheelchair":null,
+            "opening_hours":null,
+            "bank_id_code":null,
+            "has_atm":"yes",
+            "brand_wikidata":"Q499707",
+            "com_insee":"17300",
+            "com_nom":"La Rochelle"
+         },
+         "geometry":{
+            "type":"Point",
+            "coordinates":[
+               -1.149296273278742,
+               46.161434991694662
+            ]
+         }
+      }
+   ]
+}
