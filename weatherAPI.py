@@ -2,7 +2,7 @@ from flask import Flask , request, render_template,jsonify
 import psycopg2
 from dbConnection import DatabaseConnection
 import requests,json
-from weatherAPIFunction import getQuery,getPlacePOI,getGeodatatminePOI
+from weatherAPIFunction import getQuery,getPlacePOI,getGeodatatminePOI,getDistance
 import json
 
 host='localhost'
@@ -166,13 +166,64 @@ def datatourisme():
 @app.route('/geodatamine',methods=['GET','POST'])
 def geodatamine():
     if request.method == 'GET':
-        id=request.args['id']
         type=request.args['type']
-        return getGeodatatminePOI(type,id)
+        lat=request.args['lat']
+        lon=request.args['lon']
+        radius=float(request.args['radius'])
+        radius=float(radius/1000)
+        location={'lat':lat,'lon':lon}
+
+        fileName='osm/{}.json'
+        fileName=fileName.format(type)
+        jsonFile=open(fileName,'r')
+        jsonData=jsonFile.read()
+        obj=json.loads(jsonData)
+
+        poiObject=[]
+        for poi in obj['features']:
+            latPoi=poi['geometry']['coordinates'][1]
+            lonPoi=poi['geometry']['coordinates'][0]
+            locationPoi={'lat':latPoi,'lon':lonPoi}
+
+            distance=getDistance(location,locationPoi)
+            if distance <= int(radius*1000) :
+                poiObject.append(poi)
+        if poiObject:
+            return jsonify(poiObject)
+        else:
+            return jsonify({'error':'no result'})
+
+        
     if request.method == 'POST':
-        id=request.args['id']
         type=request.args['type']
-        return getGeodatatminePOI(type,id)
+        lat=request.args['lat']
+        lon=request.args['lon']
+        radius=float(request.args['radius'])
+        radius=float(radius/1000)
+        location={'lat':lat,'lon':lon}
+
+        fileName='osm/{}.json'
+        fileName=fileName.format(type)
+        jsonFile=open(fileName,'r')
+        jsonData=jsonFile.read()
+        obj=json.loads(jsonData)
+
+        poiObject=[]
+        for poi in obj['features']:
+            latPoi=poi['geometry']['coordinates'][1]
+            lonPoi=poi['geometry']['coordinates'][0]
+            locationPoi={'lat':latPoi,'lon':lonPoi}
+
+            distance=getDistance(location,locationPoi)
+            if distance <= int(radius*1000) :
+                poiObject.append(poi)
+        if poiObject:
+            return jsonify(poiObject)
+        else:
+            return jsonify({'error':'no result'})
+        
+
+
 
 
 

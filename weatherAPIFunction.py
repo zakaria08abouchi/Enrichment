@@ -1,4 +1,5 @@
 import requests
+from flask import jsonify
 def getQuery(type,lat,lon,radius):
     query="""query{
                        poi(
@@ -88,6 +89,16 @@ def getGeodatatminePOI(type,id):
         return responseJson
     else:
         return {'error':'Connection Error {}'.format(response.status_code)}
+
+def getDistance(origin,poiLocation):
+    url='https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={},{}&destinations={},{}&key=AIzaSyDKuA8HLQFPJkXLSvC12rCEPGTGUGJ1JE0'
+    url=url.format(origin['lat'],origin['lon'],poiLocation['lat'],poiLocation['lon'])
+    response=requests.get(url)
+    if response.status_code == 200:
+        return response.json()['rows'][0]['elements'][0]['distance']['value']
+    else:
+        return jsonify({'error':'connection error'})
+
 
 
 
