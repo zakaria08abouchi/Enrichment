@@ -91,7 +91,7 @@ def getGeodatatminePOI(type,id):
         return {'error':'Connection Error {}'.format(response.status_code)}
 
 def getDistance(origin,poiLocation):
-    url='https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={},{}&destinations={},{}&key=AIzaSyDKuA8HLQFPJkXLSvC12rCEPGTGUGJ1JE0'
+    url='https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={},{}&destinations={},{}&key='
     url=url.format(origin['lat'],origin['lon'],poiLocation['lat'],poiLocation['lon'])
     response=requests.get(url)
     if response.status_code == 200:
