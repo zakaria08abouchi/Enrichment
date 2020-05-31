@@ -2,13 +2,13 @@ from flask import Flask , request, render_template,jsonify
 import psycopg2
 from dbConnection import DatabaseConnection
 import requests,json
-from weatherAPIFunction import getQuery,getPlacePOI,getGeodatatminePOI,getDistance
+from weatherAPIFunction import getQuery,getPlacePOI,getGeodatatminePOI,getDistance,getAddress,getID,getPointOfInterest,dis
 import json
 
 host='localhost'
 database='da3t_db'
 user='postgres'
-password=''                      #write ur DB password
+password='db_password'
 
 app=Flask('__name__')
 
@@ -123,7 +123,7 @@ def daycontext():
             return jsonify({'error':'empty value'})
 
 #service place
-key=''
+key='google_key'
 @app.route('/place',methods=['POST','GET'])
 def place():
     if request.method == 'GET':
@@ -146,7 +146,8 @@ def datatourisme():
         type=str(request.args['type'])
         lat=request.args['lat']
         lon=request.args['lon']
-        radius=request.args['radius']
+        radius=float(request.args['radius'])
+        radius=float(radius/1000)
         
         url = 'http://localhost:8080/'
         r = requests.post(url, json={'query': getQuery(type=type,lat=lat,lon=lon,radius=radius)})
@@ -157,12 +158,14 @@ def datatourisme():
         type=str(request.args['type'])
         lat=request.args['lat']
         lon=request.args['lon']
-        radius=request.args['radius']
+        radius=float(request.args['radius'])
+        radius=float(radius/1000)
         
         url = 'http://localhost:8080/'
         r = requests.post(url, json={'query': getQuery(type=type,lat=lat,lon=lon,radius=radius)})
         return r.json()
-
+        
+#service geodatamine
 @app.route('/geodatamine',methods=['GET','POST'])
 def geodatamine():
     if request.method == 'GET':
@@ -172,28 +175,23 @@ def geodatamine():
         radius=float(request.args['radius'])
         radius=float(radius/1000)
         location={'lat':lat,'lon':lon}
+        
+        poiObject=getPointOfInterest(type,getID(getAddress(location))[0]['id'])
+        poi=[]
 
-        fileName='osm/{}.json'
-        fileName=fileName.format(type)
-        jsonFile=open(fileName,'r')
-        jsonData=jsonFile.read()
-        obj=json.loads(jsonData)
-
-        poiObject=[]
-        for poi in obj['features']:
-            latPoi=poi['geometry']['coordinates'][1]
-            lonPoi=poi['geometry']['coordinates'][0]
+        for p in poiObject['features']:
+            latPoi=p['geometry']['coordinates'][1]
+            lonPoi=p['geometry']['coordinates'][0]
             locationPoi={'lat':latPoi,'lon':lonPoi}
-
             distance=getDistance(location,locationPoi)
-            if distance <= int(radius*1000) :
-                poiObject.append(poi)
-        if poiObject:
-            return jsonify(poiObject)
+            if distance <= int(radius * 1000):
+                poi.append(p)
+        if poi:
+            return jsonify(poi)
         else:
             return jsonify({'error':'no result'})
 
-        
+
     if request.method == 'POST':
         type=request.args['type']
         lat=request.args['lat']
@@ -202,28 +200,21 @@ def geodatamine():
         radius=float(radius/1000)
         location={'lat':lat,'lon':lon}
 
-        fileName='osm/{}.json'
-        fileName=fileName.format(type)
-        jsonFile=open(fileName,'r')
-        jsonData=jsonFile.read()
-        obj=json.loads(jsonData)
+        poiObject=getPointOfInterest(type,getID(getAddress(location))[0]['id'])
+        poi=[]
 
-        poiObject=[]
-        for poi in obj['features']:
-            latPoi=poi['geometry']['coordinates'][1]
-            lonPoi=poi['geometry']['coordinates'][0]
+        for p in poiObject['features']:
+            latPoi=p['geometry']['coordinates'][1]
+            lonPoi=p['geometry']['coordinates'][0]
             locationPoi={'lat':latPoi,'lon':lonPoi}
-
             distance=getDistance(location,locationPoi)
-            if distance <= int(radius*1000) :
-                poiObject.append(poi)
-        if poiObject:
-            return jsonify(poiObject)
+            if distance <= int(radius * 1000):
+                poi.append(p)
+        if poi:
+            return jsonify(poi)
         else:
             return jsonify({'error':'no result'})
         
-
-
 
 
 
