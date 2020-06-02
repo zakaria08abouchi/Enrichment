@@ -1,4 +1,5 @@
 import requests
+from geopy.distance import geodesic
 from flask import jsonify
 def getQuery(type,lat,lon,radius):
     query="""query{
@@ -11,6 +12,9 @@ def getQuery(type,lat,lon,radius):
                        ){
                            total
                            results{
+                                rdf_type
+
+                               
                                _uri
                                rdfs_label{
                                    value
@@ -69,7 +73,7 @@ def getQuery(type,lat,lon,radius):
 
 
 def getPlacePOI(lat,lon,radius,keyword,type,key):
-   
+    
     url="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={},{}&radius={}&keyword={}&type={}&key={}"
     url=url.format(lat,lon,radius,keyword,type,key)
     response=requests.get(url)
@@ -80,24 +84,12 @@ def getPlacePOI(lat,lon,radius,keyword,type,key):
         return {'error':'Connection Error {}'.format(response.status_code)}
 
 
-def getGeodatatminePOI(type,id):
-    url='https://geodatamine.fr/data/{}/{}?format=geojson&aspoint=true&radius=7'
-    url=url.format(type,id)
-    response=requests.get(url)
-    if response.status_code == 200:
-        responseJson=response.json()
-        return responseJson
-    else:
-        return {'error':'Connection Error {}'.format(response.status_code)}
+def getDistance(origin , poiLocation):
 
-def getDistance(origin,poiLocation):
-    url='https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={},{}&destinations={},{}&key=google_key'
-    url=url.format(origin['lat'],origin['lon'],poiLocation['lat'],poiLocation['lon'])
-    response=requests.get(url)
-    if response.status_code == 200:
-        return response.json()['rows'][0]['elements'][0]['distance']['value']
-    else:
-        return jsonify({'error':'connection error'})
+    ori = (origin['lat'] , origin['lon'])
+    poi = (poiLocation['lat'] , poiLocation['lon'])
+    return geodesic(ori,poi).km
+
 
 def getAddress(location):
     url='https://maps.googleapis.com/maps/api/geocode/json?latlng={},{}&language=fr&result_type=locality|plus_code&key=google_key'
@@ -108,31 +100,39 @@ def getAddress(location):
     else:
         return jsonify({'error':'function getAddress()'})
 
+
 def getID(address):
     url='https://geodatamine.fr/boundaries/search?text={}'
     url=url.format(address)
     response=requests.get(url)
     if response.status_code == 200:
-        return response.json()
+        ID=[]
+        for obj in response.json():
+            ID.append(obj['id'])
+        return ID
+    else:
+        return jsonify({'error':'getID function '})
 
-def getPointOfInterest(type,id):
-    url='https://geodatamine.fr/data/{}/{}?format=geojson&aspoint=true'
-    url=url.format(type,id)
-    response=requests.get(url)
-    if response.status_code == 200:
-        return response.json()
-from math import sin, cos, sqrt, atan2, radians
-def dis(loc1,loc2):
-   R=6373.0
-   lat1 = radians(loc1['lat'])
-   lon1 = radians(loc1['lon'])
-   lat2 = radians(loc2['lat'])
-   lon2 = radians(loc2['lon'])
-   dlon = lon2 - lon1
-   dlat = lat2 - lat1
-   a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
-   c = 2 * atan2(sqrt(a), sqrt(1 - a))
-   return R * c
+
+
+def getPointOfInterest(type,ID):
+    poi=[]
+    for id in ID:
+        url='https://geodatamine.fr/data/{}/{}?format=geojson&aspoint=true'
+        url=url.format(type,id)
+        response=requests.get(url)
+        if response.status_code == 200:
+            poi.append(response.json())
+        else:
+            return jsonify({'error':'getPointOfInterest'})
+    return poi
+
+def exist(id,POIs):
+    for obj in POIs:
+        if obj['properties']['osm_id'] == id:
+            return True
+    return False
+
 
 
 
