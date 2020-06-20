@@ -1,6 +1,6 @@
 import requests
 import json
-from datetime import datetime,timedelta
+from datetime import datetime,timedelta,timezone
 
 
 
@@ -16,16 +16,9 @@ def getWeatherData(location,unixDate,key):
         print("error loading data from openweathermap",response.status_code)
 
 def getUnixTime(previousDay):
-    
-    url='https://showcase.linx.twenty57.net:8081/UnixTime/tounixtimestamp?datetime={}'
-    url=url.format(previousDay)
-    response=requests.get(url)
-    if response.status_code == 200:
-        
-        return response.json()['UnixTimeStamp']
-        
-    else:
-        print(response.status_code , 'eroor')
+    dt=datetime(int(previousDay.split('-')[0]) , int(previousDay.split('-')[1]) , int(previousDay.split('-')[2]))
+    timestamp = dt.replace(tzinfo=timezone.utc).timestamp()
+    return int(timestamp)
 
 def getPreviousDay():
     Previous_Date = datetime.today() - timedelta(days=1)
@@ -34,11 +27,7 @@ def getPreviousDay():
 
 
 def convertToUTC(unix):
-    url='https://showcase.linx.twenty57.net:8081/UnixTime/fromunixtimestamp?unixtimestamp={}'
-    url=url.format(unix)
-    response=requests.get(url)
-    if response.status_code == 200:
-        return response.json()['Datetime']
+    return datetime.utcfromtimestamp(int(unix)).strftime('%Y-%m-%d %H:%M:%S')
 
 def updateDB(cursor,connection,objectJsonData):
     for obj in objectJsonData['hourly'] :
