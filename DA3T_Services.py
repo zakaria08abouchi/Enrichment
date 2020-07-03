@@ -16,7 +16,7 @@ connection=DatabaseConnection(user,password,host,database)
 con=connection.getCon()
 cur=con.cursor()
 
-@app.route('/weather',methods=['POST','GET'])
+@app.route('/da3t_meteo',methods=['POST','GET'])
 def weather():
     if request.method =='GET':
         datetime=request.args['datetime']
@@ -78,7 +78,7 @@ def weather():
          else:
              return jsonify({'error':'empty value'})
 
-@app.route('/daycontext',methods=['GET','POST'])  
+@app.route('/da3t_daycontext',methods=['GET','POST'])  
 def daycontext():
     if request.method =='GET':
         date=request.args['date']
@@ -124,7 +124,7 @@ def daycontext():
 
 #service place
 key='google_key'
-@app.route('/place',methods=['POST','GET'])
+@app.route('/da3t_place',methods=['POST','GET'])
 def place():
     if request.method == 'GET':
         type=request.args['type']
@@ -140,7 +140,7 @@ def place():
         return getPlacePOI(lat,lon,radius,type,type,key)
 
 #service datatourisme
-@app.route('/datatourisme',methods=['POST','GET'])
+@app.route('/da3t_datatourisme',methods=['POST','GET'])
 def datatourisme():
     if request.method =='GET':
         type=str(request.args['type'])
@@ -166,7 +166,7 @@ def datatourisme():
         return r.json()
         
 #service geodatamine
-@app.route('/geodatamine',methods=['GET','POST'])
+@app.route('/da3t_geodatamine',methods=['GET','POST'])
 def geodatamine():
     lat=request.args['lat']
     lon=request.args['lon']
