@@ -213,21 +213,21 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
 
     # Karim's implementation
 
-    current_day = start_trajectory
-    end_day = end_trajectory
+    current_hour = start_trajectory
+    end_hour = end_trajectory
     color = 0
 
-    previous_weather = str(weathers_values_to_hour[current_day]['description'])
+    previous_weather = str(weathers_values_to_hour[current_hour]['description'])
 
-    while current_day < end_day:
-        current_weather = str(weathers_values_to_hour[current_day]['description'])
+    while current_hour < end_hour:
+        current_weather = str(weathers_values_to_hour[current_hour]['description'])
         if current_weather != previous_weather:
             color = 0 if (color == 9) else color + 1
 
-        gnt.broken_barh([(current_day, 1)], (30, 20), facecolors=(colors[color]))
+        gnt.broken_barh([(current_hour, 1)], (30, 20), facecolors=(colors[color]))
         
         previous_weather = current_weather
-        current_day = current_day + 1
+        current_hour = current_hour + 1
 
 
     plt.savefig("D:/etude/stage/Projet/developpement/code_source/application/stop_move/static/images/chart.png")
