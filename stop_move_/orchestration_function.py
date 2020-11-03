@@ -185,35 +185,49 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
         objec=None
     #print(str(i))
     #color=["tab:blue","tab:orange","tab:red","tab:green","tab:pink","tab:orange","tab:red","tab:green","tab:blue","tab:pink"]
-    color=['tab:blue', 'tab:orange', 'tab:green', 'tab:red','tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan']
+    colors=['tab:blue', 'tab:orange', 'tab:green', 'tab:red','tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan']
     i=start_trajectory
     j=end_trajectory
     k=0
     
-    
-    
-    while i < j:
-        
-        while str(weathers_values_to_hour[i]['description']) != str(weathers_values_to_hour[i+1]['description']):
-            
-            gnt.broken_barh([( i, 1  )], (30, 20), facecolors =(color[k])  )
-            
-            print( str(weathers_values[i]['description']+str(i)+'\n'+weathers_values[i+1]['description']+str(i+1)+'\n') )
-            i=i+1
-            #print('inside'+str(i)+'\n')
-            k=k+1
-            if k == 9:
-                k=0
-        gnt.broken_barh([(i , 2  )], (30, 20), facecolors =(color[k+1])  )
-        #print( str(weathers_values[i]['description'])+'n' )
-        #print( 'n'+str(weathers_values[+1]['description']) )
-        i=i+2
-        if str(weathers_values_to_hour[i-1]['description']) != str(weathers_values_to_hour[i]['description']):
-            k=k+1
-        #print('out'+str(i)+'\n')
+    # while i < j:
+    #
+    #     while str(weathers_values_to_hour[i]['description']) != str(weathers_values_to_hour[i+1]['description']):
+    #
+    #         gnt.broken_barh([( i, 1  )], (30, 20), facecolors =(color[k])  )
+    #
+    #         print( str(weathers_values[i]['description']+str(i)+'\n'+weathers_values[i+1]['description']+str(i+1)+'\n') )
+    #         i=i+1
+    #         #print('inside'+str(i)+'\n')
+    #         k=k+1
+    #         if k == 9:
+    #             k=0
+    #     gnt.broken_barh([(i , 2  )], (30, 20), facecolors =(color[k+1])  )
+    #     #print( str(weathers_values[i]['description'])+'n' )
+    #     #print( 'n'+str(weathers_values[+1]['description']) )
+    #     i=i+2
+    #     if str(weathers_values_to_hour[i-1]['description']) != str(weathers_values_to_hour[i]['description']):
+    #         k=k+1
+    #     #print('out'+str(i)+'\n')
 
-    #end visualise weather
-    
+
+    # Karim's implementation
+
+    current_day = start_trajectory
+    end_day = end_trajectory
+    color = 0
+
+    previous_weather = str(weathers_values_to_hour[current_day]['description'])
+
+    while current_day < end_day:
+        current_weather = str(weathers_values_to_hour[current_day]['description'])
+        if current_weather != previous_weather:
+            color = 0 if (color == 9) else color + 1
+
+        gnt.broken_barh([(current_day, 1)], (30, 20), facecolors=(colors[color]))
+        
+        previous_weather = current_weather
+        current_day = current_day + 1
+
 
     plt.savefig("D:/etude/stage/Projet/developpement/code_source/application/stop_move/static/images/chart.png")
-
