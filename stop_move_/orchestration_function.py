@@ -94,7 +94,7 @@ def timeToHour(point):
     return timeHour
 
 def visualise(trajectorys_stop_move , stops_duration , entering_time , trajectorys_weather , weathers):
-    fig, gnt = plt.subplots( )
+    fig, gnt = plt.subplots()
     gnt.set_ylim(0, 60)
     trajectoryDuration = toHour(trajectorys_stop_move)
    
@@ -234,6 +234,9 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
         
         previous_weather = current_weather
         current_hour = current_hour + 1
-
+    
+    plt.grid(False)
+    plt.right_ax.grid(False) 
     plt.tight_layout()
+
     plt.savefig("D:/etude/stage/Projet/developpement/code_source/application/stop_move/static/images/chart.png")
