@@ -2,6 +2,7 @@ from datetime import datetime , time , date , timezone
 from geopy.distance import geodesic
 import folium
 import matplotlib.pyplot as plt 
+import numpy as np
 from dbConnection import DatabaseConnection
 from flask import jsonify
 
@@ -96,8 +97,13 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
     fig, gnt = plt.subplots( )
     gnt.set_ylim(0, 60)
     trajectoryDuration = toHour(trajectorys_stop_move)
-    
-    gnt.set_xlim( trajectoryDuration["start"] , trajectoryDuration["end"] )
+   
+    x_start = trajectoryDuration["start"] 
+    x_end = trajectoryDuration["end"] 
+
+    gnt.set_xlim(x_start, x_end)
+    gnt.xticks(np.arange(x_start, x_end, 1))
+
     gnt.set_xlabel('trajectory duration') 
     gnt.set_ylabel('orchestration') 
     gnt.set_yticks([10, 40])
@@ -229,5 +235,5 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
         previous_weather = current_weather
         current_hour = current_hour + 1
 
-
+    plt.tight_layout()
     plt.savefig("D:/etude/stage/Projet/developpement/code_source/application/stop_move/static/images/chart.png")
