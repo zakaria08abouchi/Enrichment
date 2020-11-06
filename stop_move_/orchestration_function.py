@@ -105,7 +105,7 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
     gnt.set_xlim(x_start, x_end)
     gnt.set_xticks(np.arange(x_start, x_end, 1))
 
-    ax.set_xticklabels(rotation = (45), fontsize = 10, va='bottom', ha='left')
+    ax.set_xticklabels(rotation = (90), fontsize = 10, va='bottom', ha='left')
     
     gnt.set_xlabel('trajectory duration') 
     gnt.set_ylabel('orchestration') 
