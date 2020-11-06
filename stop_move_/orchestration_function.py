@@ -237,7 +237,7 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
         if current_weather != previous_weather:
             color = 0 if (color == 9) else color + 1
             plt.axvline(x=current_hour)
-            patches_map[colors[color]] = current_weather             
+            patches_map[current_weather] = colors[color]           
                 
         gnt.broken_barh([(current_hour, 1)], (30, 20), facecolors=(colors[color]))
         
@@ -245,7 +245,7 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
         current_hour = current_hour + 1
    
     for key, value in patches_map.items():
-        patch = mpatches.Patch(color=key, label=value)
+        patch = mpatches.Patch(color=value, label=key)
         patches.append(patch)
         
     plt.legend(handles=patches)
