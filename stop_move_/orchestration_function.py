@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from dbConnection import DatabaseConnection
 from flask import jsonify
+import matplotlib.patches as mpatches
 
 host='localhost'
 database='da3t_db'
@@ -223,23 +224,33 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
 
     current_hour = start_trajectory
     end_hour = end_trajectory
-    color = 0
+    color = 9
 
-    previous_weather = str(weathers_values_to_hour[current_hour]['description'])
+    previous_weather = "noweather" 
+    
+    patches = []
+    patches_map = {}
 
     while current_hour < end_hour:
         current_weather = str(weathers_values_to_hour[current_hour]['description'])
         if current_weather != previous_weather:
             color = 0 if (color == 9) else color + 1
             plt.axvline(x=current_hour)
-
+            patches_map[colors[color]] = current_weather             
+                
         gnt.broken_barh([(current_hour, 1)], (30, 20), facecolors=(colors[color]))
         
         previous_weather = current_weather
         current_hour = current_hour + 1
-    
+   
+    for key, value in patches_map.items():
+        patch = mpatches.Patch(color=key, label=value)
+        patches.append(patch)
+        
+    plt.legend(handles=patches)
+
     plt.grid(False)
     plt.right_ax.grid(False) 
     plt.tight_layout()
-
+    
     plt.savefig("D:/etude/stage/Projet/developpement/code_source/application/stop_move/static/images/chart.png")
