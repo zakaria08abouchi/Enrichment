@@ -2,8 +2,10 @@ from datetime import datetime , time , date , timezone
 from geopy.distance import geodesic
 import folium
 import matplotlib.pyplot as plt 
+import numpy as np
 from dbConnection import DatabaseConnection
 from flask import jsonify
+import matplotlib.patches as mpatches
 
 host='localhost'
 database='da3t_db'
@@ -93,15 +95,29 @@ def timeToHour(point):
     return timeHour
 
 def visualise(trajectorys_stop_move , stops_duration , entering_time , trajectorys_weather , weathers):
-    fig, gnt = plt.subplots( )
-    gnt.set_ylim(0, 60)
+    fig, gnt = plt.subplots()
+    gnt.set_ylim(0, 150)
     trajectoryDuration = toHour(trajectorys_stop_move)
+   
+    x_start = trajectoryDuration["start"] 
+    x_end = trajectoryDuration["end"] 
     
-    gnt.set_xlim( trajectoryDuration["start"] , trajectoryDuration["end"] )
-    gnt.set_xlabel('trajectory duration') 
+
+    gnt.set_xlim(x_start, x_end)
+    gnt.set_xticks(np.arange(x_start, x_end, 1))
+
+    plt.xticks(rotation=90)
+    #plt.subplots_adjust(bottom=5.0)
+
+    #gnt.set_xticklabels(rotation = (90), fontsize = 10, va='bottom', ha='left',labels='')
+    
+
+    #gnt.set_xticklabels(rotation = (45), fontsize = 10, va='bottom', ha='left',labels='zakaria' )
+    
+    gnt.set_xlabel('Trajectory Duration [hr]') 
     gnt.set_ylabel('orchestration') 
     gnt.set_yticks([10, 40])
-    gnt.set_yticklabels(['S/M', 'weather'])
+    gnt.set_yticklabels(['Stop/Move', 'weather'])
     gnt.grid(True)
 
     # start visualise stop move
@@ -110,7 +126,7 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
         start_stop=time["start"]
         end_stop=time["end"]
         #gnt.broken_barh([(start, end-start)], (5, 10), facecolors =('tab:red'))
-        gnt.broken_barh([(start_stop , end_stop-start_stop )], (5, 10), facecolors =('tab:red'))
+        gnt.broken_barh([(start_stop , end_stop-start_stop )], (5, 15), facecolors =('tab:red'))
         #print(str(start) + " "+ str(end)+'\n')
         #gnt.broken_barh([(trajectoryDuration["start"], trajectoryDuration["end"]-trajectoryDuration["start"])], (10, 30), facecolors =('tab:red'))
         time=None
@@ -124,20 +140,20 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
         stop_2=stops_duration[i+1]
         time2=timeToFloat(stop_2)
         if time2["start"]>time1["end"]:
-            gnt.broken_barh([(time1["end"], time2["start"]-time1["end"])], (5, 10), facecolors =('tab:orange'))
+            gnt.broken_barh([(time1["end"], time2["start"]-time1["end"])], (5, 15), facecolors =('tab:orange'))
             #gnt.broken_barh([( time1["start"]+ (entringTime / 60) , time2["start"]-time1["start"]- (entringTime / 60) )], (5, 10), facecolors =('tab:orange'))
     
     trajectory_duration=toHour(trajectorys_stop_move)
     first_stop=stops_duration[0]
     split_first_stop=timeToFloat(first_stop)
     if trajectory_duration["start"] < split_first_stop["start"]:
-        gnt.broken_barh([(trajectory_duration["start"], split_first_stop["start"]-trajectory_duration["start"])], (5, 10), facecolors =('tab:orange'))
+        gnt.broken_barh([(trajectory_duration["start"], split_first_stop["start"]-trajectory_duration["start"])], (5, 15), facecolors =('tab:orange'))
 
     #a2=toHour(trajectorys_stop_move)
     last_stop=stops_duration[-1]
     split_last_stop=timeToFloat(last_stop)
     if trajectory_duration['end'] > split_last_stop["end"] :
-        gnt.broken_barh([(split_last_stop["end"], trajectory_duration["end"]-split_last_stop["end"])], (5, 10), facecolors =('tab:orange'))
+        gnt.broken_barh([(split_last_stop["end"], trajectory_duration["end"]-split_last_stop["end"])], (5, 15), facecolors =('tab:orange'))
     # end visualise stop move
 
     #start visualise weather
@@ -185,31 +201,89 @@ def visualise(trajectorys_stop_move , stops_duration , entering_time , trajector
         objec=None
     #print(str(i))
     #color=["tab:blue","tab:orange","tab:red","tab:green","tab:pink","tab:orange","tab:red","tab:green","tab:blue","tab:pink"]
-    color=['tab:blue', 'tab:orange', 'tab:green', 'tab:red','tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan']
+    colors=['tab:blue', 'gold', 'tab:green', 'indigo','tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan','teal']
     i=start_trajectory
     j=end_trajectory
     k=0
     
-    
-    
-    while i < j:
-        while str(weathers_values_to_hour[i]['description']) != str(weathers_values_to_hour[i+1]['description']):
-            gnt.broken_barh([( i, 1  )], (30, 20), facecolors =(color[k])  )
-            
-            #print( str(weathers_values[i]['description'])+'n' )
-            i=i+1
-            print('inside'+str(i)+'\n')
-            k=k+1
-            if k == 9:
-                k=0
-        gnt.broken_barh([(i , 2  )], (30, 20), facecolors =(color[k+1])  )
-        #print( str(weathers_values[i]['description'])+'n' )
-        #print( 'n'+str(weathers_values[+1]['description']) )
-        i=i+1
-        print('out'+str(i)+'\n')
+    # while i < j:
+    #
+    #     while str(weathers_values_to_hour[i]['description']) != str(weathers_values_to_hour[i+1]['description']):
+    #
+    #         gnt.broken_barh([( i, 1  )], (30, 20), facecolors =(color[k])  )
+    #
+    #         print( str(weathers_values[i]['description']+str(i)+'\n'+weathers_values[i+1]['description']+str(i+1)+'\n') )
+    #         i=i+1
+    #         #print('inside'+str(i)+'\n')
+    #         k=k+1
+    #         if k == 9:
+    #             k=0
+    #     gnt.broken_barh([(i , 2  )], (30, 20), facecolors =(color[k+1])  )
+    #     #print( str(weathers_values[i]['description'])+'n' )
+    #     #print( 'n'+str(weathers_values[+1]['description']) )
+    #     i=i+2
+    #     if str(weathers_values_to_hour[i-1]['description']) != str(weathers_values_to_hour[i]['description']):
+    #         k=k+1
+    #     #print('out'+str(i)+'\n')
 
-    #end visualise weather
+
+    #  implementation
+
+    """current_hour = start_trajectory
+    end_hour = end_trajectory
+    color = 0
+
+    previous_weather = "noweather" 
     
+    patches = []
+    patches_map = {}
 
-    plt.savefig("D:/etude/stage/Projet/developpement/code_source/application/stop_move/static/images/chart.png")
+    previous_weather = str(weathers_values_to_hour[current_hour]['description'])
 
+    while current_hour <= end_hour:
+        current_weather = str(weathers_values_to_hour[current_hour]['description'])
+        if current_weather != previous_weather:
+            color = 0 if (color == 9) else color + 1
+            #plt.axvline(x=current_hour)
+
+        gnt.broken_barh([(current_hour, 1)], (30, 20), facecolors=(colors[color]))
+        
+        previous_weather = current_weather
+        current_hour = current_hour + 1
+    
+    plt.grid(False)
+    #plt.right_ax.grid(False) 
+    plt.tight_layout()"""
+
+    current_hour = start_trajectory
+    end_hour = end_trajectory
+    color = 10
+
+    previous_weather = "noweather" 
+    
+    patches = []
+    patches_map = {}
+
+    while current_hour <= end_hour:
+        current_weather = str(weathers_values_to_hour[current_hour]['description'])
+        if current_weather != previous_weather:
+            color = 0 if (color == 10) else color + 1
+            #plt.axvline(x=current_hour)
+            patches_map[colors[color]] = current_weather           
+                
+        gnt.broken_barh([(current_hour, 1)], (30, 25), facecolors=(colors[color]))
+        
+        previous_weather = current_weather
+        current_hour = current_hour + 1
+   
+    for key, value in patches_map.items():
+        patch = mpatches.Patch(color=key, label=value)
+        patches.append(patch)
+        
+    plt.legend(handles=patches)
+
+    plt.grid(False)
+    #plt.right_ax.grid(False) 
+    plt.tight_layout()
+
+    plt.savefig("D:/etude/stage/Projet/developpement/code_source/Enrichment/stop_move_/static/images/chart.png")

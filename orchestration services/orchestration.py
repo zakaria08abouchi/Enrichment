@@ -78,14 +78,14 @@ def orchestration():
                         if checkTime( Points[0]['time'] , Points[-1]['time'] , float(time) ) == True :
                             Stop.append(center)  
                             stops_duration.append({ "start" : Points[0]['time'] , "end" : Points[-1]['time'] })
-                            print(str(stops_duration))
+                            #print(str(stops_duration))
                            
                     i=i+j
                     j=0
                     Points=[]
                     #end stop algo
 
-                # start weather visualisation
+                # start weather visualisations
                 trajectorys_weather=[]
                 weathers=[]
                 i=1#
